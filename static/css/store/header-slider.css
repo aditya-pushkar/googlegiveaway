@@ -1,0 +1,155 @@
+section {
+  padding: 3rem 9%;
+}
+*::selection {
+  background: var(--red);
+  color: #fff;
+}
+
+/* slider section */
+.heading {
+  text-align: center;
+  color: transparent;
+  background: var(--primary);
+  /* backgound: var(--gradiant); */
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 5rem;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+.home {
+  background: url(https://adityapushkar.s3.us-east-2.amazonaws.com/techstack/home-bg.jpg) no-repeat;
+  /* background: url("{% static 'images/home-bg.jpg' %}") no-repeat; */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.home .content {
+  padding-top: 5rem;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.home .content h3 {
+  font-size: 6.5rem;
+  color: #fff;
+}
+
+.home .content p {
+  font-size: 1.7rem;
+  color: #eee;
+  padding: 1rem 0;
+}
+
+.home .swiper-container {
+  width: 100%;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.home .swiper-slide {
+  width: 30rem;
+  height: 50rem;
+}
+
+.home .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-01 {
+  display: inline-block;
+  padding: 0.7rem 3rem;
+  margin-top: 1rem;
+  border-radius: 5rem;
+  background: white;
+  color: black;
+  cursor: pointer;
+  font-size: 1.7rem;
+}
+
+.btn-01:hover {
+  transform: scale(1.1);
+  color: black;
+}
+
+@media (max-width: 991px) {
+  section {
+    padding: 3rem 4%;
+  }
+}
+
+@media (max-width: 768px) {
+  .fa-times {
+    transform: rotate(180deg);
+  }
+
+  .home .content h3 {
+    font-size: 4rem;
+  }
+
+  .home .content p {
+    font-size: 1.5rem;
+  }
+
+  .about .row .content {
+    text-align: center;
+  }
+
+  .about .row .content .buttons a {
+    width: 100%;
+  }
+
+  .about .row .content .buttons a:last-child {
+    margin: 1rem 0;
+  }
+}
+
+/* ######################### how to play ############################## */
+
+.features .box-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.features .box-container .box {
+  margin: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  background: rgba(237, 23, 111, 0.05);
+  padding: 1rem;
+  flex: 1 1 30rem;
+  cursor: pointer;
+  background-color: #e9edf4;
+}
+
+.features .box-container .box i {
+  color: black;
+  font-size: 5rem;
+  padding: 1rem;
+}
+
+.features .box-container .box h3 {
+  color: var(--black);
+  font-size: 2.4rem;
+}
+
+.features .box-container .box p {
+  color: #666;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+/* .features .box-container .box:hover{
+    background:var(--gradient);
+  }
+  
+  .features .box-container .box:hover > *{
+    color:#fff;
+  } */
