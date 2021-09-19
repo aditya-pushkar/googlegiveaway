@@ -27,12 +27,6 @@
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
 
-    <!--==========STORE CSS ================-->
-    
-    <link rel="stylesheet" href="{% static 'css/store/header-slider.css' %}" />
-
-   
-
     <!-- font awesome cdn link  -->
     <link
       rel="stylesheet"
@@ -40,6 +34,7 @@
     />
 
     <!-- Bootstrap -->
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -52,11 +47,15 @@
       crossorigin="anonymous"
     ></script>
 
+
     <!-- Boxicons -->
     <link
       href="https://unpkg.com/boxicons@2.0.8/css/boxicons.min.css"
       rel="stylesheet"/>
-    
+
+
+    <!--==========STORE CSS ================-->
+    <link rel="stylesheet" href="{% static 'css/store/header-slider.css' %}" />
     <link rel="stylesheet" href="{% static 'css/store/main.css' %}" />
 
     <title>{% block title %}GoogleGiveaway{% endblock title %}</title>
@@ -126,10 +125,14 @@
               >Account <span><i class="fas fa-chevron-down"></i></span
             ></label>
             <ul class="drop-menu2">
-              <li><a href="">Register</a></li>
-              <li><a href="">Log In</a></li>
-              <li><a href="">Log Out</a></li>
-              <li><a href="">Feedback</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'account:logout'%}">Log Out</a></li>
+              <li><a href="{% url 'account:dashboard'%}">Dashboard</a></li>
+            {%else%}
+              <li><a href="{% url 'account:register'%}">Register</a></li>
+              <li><a href="{% url 'account:login'%}">Log In</a></li>
+            {% endif %}
+            
             </ul>
           </li>
 

@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # myApps
-    'store.apps.StoreConfig'
+    'store.apps.StoreConfig',
+    'account.apps.AccountConfig',
 ]
 
 MIDDLEWARE = [
@@ -119,7 +120,14 @@ STATIC_ROOT = 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media/images'
 
+# co=ustom user model
+AUTH_USER_MODEL = 'account.UserBase'
+LOGIN_REDIRECT_URL = '/account/dashboard'
+LOGIN_URL = '/account/login/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
