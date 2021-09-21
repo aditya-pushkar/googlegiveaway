@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     # myApps
     'store.apps.StoreConfig',
     'account.apps.AccountConfig',
+    'order.apps.OrderConfig',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,8 @@ LOGIN_URL = '/account/login/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+
+# RazorPay
+
+KEY_ID = "rzp_test_tRzIzsfuB2WrqP"
+KEY_SECRET = "Gggpa524l7jqnz63akGGuQzl"

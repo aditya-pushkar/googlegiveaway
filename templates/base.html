@@ -26,6 +26,8 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
+    <!--==========STORE CSS ================-->
+    <link rel="stylesheet" href="{% static 'css/store/header-slider.css' %}" />
 
     <!-- font awesome cdn link  -->
     <link
@@ -53,9 +55,6 @@
       href="https://unpkg.com/boxicons@2.0.8/css/boxicons.min.css"
       rel="stylesheet"/>
 
-
-    <!--==========STORE CSS ================-->
-    <link rel="stylesheet" href="{% static 'css/store/header-slider.css' %}" />
     <link rel="stylesheet" href="{% static 'css/store/main.css' %}" />
 
     <title>{% block title %}GoogleGiveaway{% endblock title %}</title>
@@ -213,18 +212,6 @@
     </footer>
   <!-- End Footer -->
 
-  <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-        crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
-
     <!-- ======== SwiperJS ======= -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.5/swiper-bundle.min.js"></script>
 
@@ -236,32 +223,5 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="{% static 'js/store/header-slider.js' %}"></script>
 
-    {% block js %}
-    <script>
-  console.log('working');
-  if(localStorage.getItem('cart')== null){
-    var cart = {};
-  }
-  else{
-    cart = JSON.parse(localStorage.getItem('cart'));
-    
-    document.getElementById('cart').innerHTML = Object.keys(cart).length;
-  }
-  $('.cart').click(function(){
-    console.log('clicked')
-    var idstr = this.id.toString();
-    console.log(idstr);
-    if(cart[idstr] != undefined){
-      cart[idstr] = cart[idstr]+1;
-    }
-    else{
-      cart[idstr] =1;
-    }
-    console.log(cart);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    document.getElementById('cart').innerHTML = Object.keys(cart).length;
-  });
-</script>
-    {% endblock js %}
   </body>
 </html>

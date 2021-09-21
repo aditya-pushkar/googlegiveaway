@@ -46,7 +46,7 @@
 
         <form class="form">
           <input type="text" placeholder="1" />
-          <a id="pr{{product.id}}" class="addCart cart">Add To Cart</a>
+          <a href="{% url 'order:checkout' product.slug %}" class="addCart"> Enter Now</a>
           {% comment %} <a id="pr{{product.id}}" class="addCart">Buy Now</a> {% endcomment %}
         </form>
         <h3>PRODUCT DETAIL</h3>
