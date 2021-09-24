@@ -6,48 +6,16 @@
   <section class="section product-detail">
     <div class="details container">
       <div class="left">
-        <div class="main">
+        <div class="main" style="margin-top:-90px">
           <img src="{{product.image.url}}" alt="" />
         </div>
-        {% comment %} <div class="thumbnails">
-          <div class="thumbnail">
-            <img src="./images/product-2.jpg" alt="" />
-          </div>
-          <div class="thumbnail">
-            <img src="./images/product-3.jpg" alt="" />
-          </div>
-          <div class="thumbnail">
-            <img src="./images/product-4.jpg" alt="" />
-          </div>
-          <div class="thumbnail">
-            <img src="./images/product-5.jpg" alt="" />
-          </div>
-        </div> {% endcomment %}
+        
       </div>
-      <div class="right">
-        {% comment %} <span>Home/T-shirt</span> {% endcomment %}
+      <div class="right" id="mob-right">
         <h1>{{product.title}}</h1>
         <div class="price">₹ {{product.price}}</div>
-        <form>
-        {% csrf_token %}
-          <div>
-            <select>
-              <option value="Select Quantity" selected disabled>
-                Select Quantity
-              </option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <span><i class="fas fa-chevron-down"></i></span>
-          </div>
-        </form>
-
         <form class="form">
-          <input type="text" placeholder="1" />
-          <a href="{% url 'order:checkout' product.slug %}" class="addCart"> Enter Now</a>
-          {% comment %} <a id="pr{{product.id}}" class="addCart">Buy Now</a> {% endcomment %}
+          <a href="{% url 'order:checkout' product.slug %}" class="addCart" style="background-color: #0B5ED7"> Enter Now</a>
         </form>
         <h3>PRODUCT DETAIL</h3>
         <p>
@@ -57,40 +25,7 @@
     </div>
   </section>
 
+  
+
 
 {% endblock %}
-
-
-  <!-- Related Products -->
-
-  {% comment %} <section class="section related-products">
-    <div class="title">
-      <h2>Related Products</h2>
-      <span>Select from the premium product brands and save plenty money</span>
-    </div>
-    <div class="product-layout container">
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product-1.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-
-          <ul class="side-icons">
-            <span><i class="fas fa-search"></i></span>
-            <span><i class="far fa-heart"></i></span>
-            <span><i class="fas fa-sliders-h"></i></span>
-          </ul>
-        </div>
-        <div class="bottom">
-          <a href="">Bambi Print Mini Backpack</a>
-          <div class="price">
-            <span>$150</span>
-          </div>
-        </div>
-      </div>
-      
-      
-      
-    </div>
-  </section> {% endcomment %}

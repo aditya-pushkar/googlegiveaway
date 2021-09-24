@@ -1,4 +1,4 @@
-{% extends "../base.html" %}
+{% extends "../account_base.html" %}
 {% load static %}
 {% block title %} Login {% endblock %}
 
@@ -21,8 +21,7 @@
     }
 </style>
 
-
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: -190px;">
     <div class="row no-gutter" style="allign-item:center;">
         <div class="col-md-12">
             <div class="login d-flex align-items-center py-5">
@@ -32,7 +31,7 @@
                             <form style="margin-top:100px" class="account-form p-4 rounded" action="{% url 'account:login' %}" method="post">
 
                                 {% csrf_token %}
-                                <h1 class="mb-4">Sign In</h1>
+                                <h1 class="mb-4 text-center">Login</h1>
 
                                 {% if form.errors %}
                                 <div class="alert alert-primary" role="alert">
@@ -47,7 +46,7 @@
                                 {{ form.password}}
                                 <div class="d-grid gap-2">
                                     <input type="hidden" name="next" value="{{ next }}">
-                                    <button class="btn btn-primary py-2 mb-4 mt-5 fw-bold" type="submit" value="Log-in">Sign in
+                                    <button class="btn btn-primary py-2 mb-4 mt-5 fw-bold" type="submit" value="Log-in">Login
                                     </button>
                                 </div>
                                 <p class="text-center pb-3">

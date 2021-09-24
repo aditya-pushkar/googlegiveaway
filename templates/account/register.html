@@ -1,5 +1,6 @@
-{% extends "../base.html" %}
-{% block title %}Log-in{% endblock %}
+{% extends "../account_base.html" %}
+{% load static %}
+{% block title %}Register{% endblock %}
 {% block content %}
 
 <style>
@@ -14,7 +15,7 @@
     }
 </style>
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: -100px;">
     <div class="row no-gutter">
         <div class="col-md-12">
             <div class="login d-flex align-items-center py-5">
@@ -23,8 +24,8 @@
                         <div class="col-12 col-lg-7  mx-auto">
                              <form class="account-form p-4 rounded col-lg-10 mx-auto" action="." method="post">
                                 {% csrf_token %}
-                                <h3 class="mb-2 font-weight-bold">Create an account</h3>
-                                <p class="mb-4">It's free and only takes a minute.</p>
+                                <h3 class="mb-2 font-weight-bold text-center">Create an account</h3>
+                                <p class="mb-4 text-center">It's free and only takes a minute.</p>
 
                                 {% if form.errors %}
                                 <p>Please correct the following errors:</p>

@@ -9,6 +9,7 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 # internal import 
 from .forms import RegistrationForm
+from billboard.forms import UplodeImageForm
 from .token import account_activation_token
 from .models import UserBase
 from refferal.models import Refferal
@@ -21,11 +22,30 @@ def dashboard(request):
     user = request.user 
     refferal_profile = Refferal.objects.get(user=user)
     total_refferals = refferal_profile.get_recommended_profiles()
-    context = {
-        'total_refferals': total_refferals
-    }
+    formUplode = UplodeImageForm()
+    
+    if request.method == "POST":
+        formUplode = UplodeImageForm(request.POST, request.FILES)
+        if formUplode.is_valid():
 
+            form = formUplode.save(commit=False)
+            form.user = user
+            form.image = formUplode.cleaned_data['image']
+            form.save()
+
+            return redirect('success')
+        else:
+            pass
+
+    context = {
+        'total_refferals': total_refferals,
+        'form': formUplode
+    }  
     return render(request, 'account/dashboard.html', context)
+
+
+def success(request):
+    return HttpResponse('your pic is uploded successfuly')
 
 
 def account_register(request):

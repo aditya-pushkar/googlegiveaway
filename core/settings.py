@@ -27,11 +27,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # myApps
+    #Apps
     'store.apps.StoreConfig',
     'account.apps.AccountConfig',
     'order.apps.OrderConfig',
     'refferal.apps.RefferalConfig',
+    'billboard.apps.BillboardConfig',
 ]
 
 MIDDLEWARE = [

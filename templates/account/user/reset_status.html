@@ -1,55 +1,48 @@
-<!-- Bootstrap -->
-<link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-    crossorigin="anonymous"
-/>
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"
-></script>
-{% block title %}Reset Status{% endblock %}
+{% extends "../../account_base.html" %}
+{% load static %}
+{% block title %} Status {% endblock %}
 
 
-
-<style>
-    .container-fluid {
-        max-width: 100%;
-    }
-
-    .account-form input {
-        border: 2px solid #ccc;
-        height: calc(2em + .75rem + 2px);
-    }
-
-    .account-form input:focus {
-        border-color: #1497ff;
-        box-shadow: none;
-    }
-</style>
+{% block content %}
 
 
-<div class="container-fluid">
-    <div class="row no-gutter">
-        <div class="col-md-12">
-            <div class="login d-flex align-items-center py-5">
-                <div class="container">
+    <style>
+        .container-fluid {
+            max-width: 100%;
+        }
+
+        .account-form input {
+            border: 2px solid #ccc;
+            height: calc(2em + .75rem + 2px);
+        }
+
+        .account-form input:focus {
+            border-color: #1497ff;
+            box-shadow: none;
+        }
+    </style>
+
+
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="col-md-12">
+                <div class="login d-flex align-items-center py-5">
                     <div class="container">
-                        <div>
-                            {% if 'email' in request.get_full_path %}
-                            <h3 class="mb-4">Password Reset Success</h3>
-                            <p>Check your email for instructions</p>
-                            {% endif%}
-                            {% if 'complete' in request.get_full_path %}
-                            <h3 class="mb-4">Password Reset Success</h3>
-                            <a href="{% url "account:login" %}">Login</a>
-                            {% endif%}
+                        <div class="container">
+                            <div>
+                                {% if 'email' in request.get_full_path %}
+                                <h3 class="mb-4">Password Reset Success</h3>
+                                <p>Check your email for instructions</p>
+                                {% endif%}
+                                {% if 'complete' in request.get_full_path %}
+                                <h3 class="mb-4">Password Reset Success</h3>
+                                <a href="{% url "account:login" %}">Login</a>
+                                {% endif%}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+{% endblock %}
