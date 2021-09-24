@@ -6,9 +6,8 @@
   --black: #222;
   --grey1: #3a3b3c;
   --grey2: #828282;
-  --red: #ed176f;
-  --coral: #f7817f;
-  --gradient: linear-gradient(90deg, var(--red), var(--coral));
+  --red: #828282;
+
 }
 
 *,
