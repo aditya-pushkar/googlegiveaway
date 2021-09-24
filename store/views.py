@@ -1,3 +1,4 @@
+from refferal.models import Refferal
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 
@@ -7,16 +8,27 @@ from .models import Category, Product
 
 # Create your views here.
 
-class Home(ListView):
-    context_object_name = 'item'
-    template_name = 'store/home.html'
-    queryset = Product.objects.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(Home, self).get_context_data(**kwargs)
-        context['is_lastchance'] = Product.objects.filter(is_lastchance=True)
-        context['is_trending'] = Product.objects.filter(is_trending=True)
-        return context
+def home(request, *args, **kwargs):
+    code = str(kwargs.get('ref_code'))
+    try:
+        # get the code of the person who reffered
+        refferal = Refferal.objects.get(code=code)
+        request.session['ref_profile'] = refferal.id
+        print('id', refferal.id)
+    except:
+        pass
+    print(request.session.get_expiry_age())
+
+    is_lastchance =  Product.objects.filter(is_lastchance=True)
+    is_trending = Product.objects.filter(is_trending=True)
+    
+    context = {
+        'is_lastchance': is_lastchance,
+        'is_trending': is_trending
+    }
+
+    return render(request, 'store/home.html', context)
 
 
 def category_list(request, category_slug=None):

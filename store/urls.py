@@ -4,9 +4,10 @@ from . import views
 app_name = 'store'
 
 urlpatterns = [
-    path('', views.Home.as_view(), name='home'),
+    path('', views.home, name='home'),
+    path('<str:ref_code>/', views.home, name='main-view'),
     path('giveaway/<slug:category_slug>/', views.category_list, name='category_list'),
-    path('<slug:slug>/', views.product_detail, name='product_detail'),
+    path('product/<slug:slug>/', views.product_detail, name='product_detail'),
     path('view/all/', views.Product_all.as_view(), name='product_all'),
 
 ]

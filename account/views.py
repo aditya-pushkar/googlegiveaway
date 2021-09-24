@@ -11,37 +11,77 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from .forms import RegistrationForm
 from .token import account_activation_token
 from .models import UserBase
+from refferal.models import Refferal
+
 
 
 # Create your views here.
 @login_required
 def dashboard(request):
-    return render(request, 'account/dashboard.html')
+    user = request.user 
+    refferal_profile = Refferal.objects.get(user=user)
+    total_refferals = refferal_profile.get_recommended_profiles()
+    context = {
+        'total_refferals': total_refferals
+    }
+
+    return render(request, 'account/dashboard.html', context)
 
 
 def account_register(request):
-
     if request.user.is_authenticated:
         return redirect('account:dashboard')
-
+    # get refferal code  
+    refferal_id = request.session.get('ref_profile')
+    print('profile_id', refferal_id)
     if request.method == 'POST':
         registerForm = RegistrationForm(request.POST)
+
         if registerForm.is_valid():
-            user = registerForm.save(commit=False)
-            user.email = registerForm.cleaned_data['email']
-            user.set_password(registerForm.cleaned_data['password'])
-            user.is_active = False
-            user.save()
-            current_site = get_current_site(request)
-            subject = 'Activate your Account'
-            message = render_to_string('account/account_activation_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': account_activation_token.make_token(user),
-            })
-            user.email_user(subject=subject, message=message)
-            return HttpResponse('registered succesfully and activation sent')
+            
+            if refferal_id is not None:
+                recommended_by_profile = Refferal.objects.get(id=refferal_id)
+                print("recommended_by_profile", recommended_by_profile)
+                instance = registerForm.save()
+                registered_user  = UserBase.objects.get(id=instance.id)
+                registered_profile = Refferal.objects.get(user=registered_user)
+                registered_profile.recommended_by = recommended_by_profile.user
+                registered_profile.save()
+
+
+                user = registerForm.save(commit=False)
+                user.email = registerForm.cleaned_data['email']
+                user.set_password(registerForm.cleaned_data['password'])
+                user.is_active = False
+                user.save()
+
+                current_site = get_current_site(request)
+                subject = 'Activate your Account'
+                message = render_to_string('account/account_activation_email.html', {
+                    'user': user,
+                    'domain': current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': account_activation_token.make_token(user),
+                })
+                user.email_user(subject=subject, message=message)
+                return HttpResponse('registered succesfully and activation sent')
+            else:
+                user = registerForm.save(commit=False)
+                user.email = registerForm.cleaned_data['email']
+                user.set_password(registerForm.cleaned_data['password'])
+                user.is_active = False
+                user.save()
+                current_site = get_current_site(request)
+                subject = 'Activate your Account'
+                message = render_to_string('account/account_activation_email.html', {
+                    'user': user,
+                    'domain': current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': account_activation_token.make_token(user),
+                })
+                user.email_user(subject=subject, message=message)
+                return HttpResponse('registered succesfully and activation sent')
+
     else:
         registerForm = RegistrationForm()
     return render(request, 'account/register.html', {'form': registerForm})

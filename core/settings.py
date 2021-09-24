@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'store.apps.StoreConfig',
     'account.apps.AccountConfig',
     'order.apps.OrderConfig',
+    'refferal.apps.RefferalConfig',
 ]
 
 MIDDLEWARE = [
