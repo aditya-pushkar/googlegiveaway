@@ -1,0 +1,294 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title%} Dashboard {% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href={% static 'css/account/dashboard.css' %}>
+{% endblock header %}
+
+
+<!-- body conteent-->
+{% block content %}
+
+  <div class="container-scroller" id='main-content'>
+    <!-- partial:partials/_navbar.html -->
+
+    <!-- partial -->
+ 
+      <!-- partial -->
+      <div class="main-panel" id="main-panel">
+        <div class="content-wrapper">
+          
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="d-flex justify-content-between flex-wrap">
+                <div class="d-flex align-items-end flex-wrap">
+                  <div class="mr-md-3 mr-xl-5">
+                    <h2>Welcome back,</h2>
+                    <p class="mb-md-0">Your analytics dashboard template.</p>
+                  </div>
+                  <div class="d-flex">
+                    <i class="mdi mdi-home text-muted hover-cursor"></i>
+                    <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</p>
+                    
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-end flex-wrap">
+                  <button class="btn btn-primary mt-2 mt-xl-0 btn-lg">Uplode Pic</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" id="proBanner">
+            <div class="col-md-12 grid-margin">
+              <div class="card bg-gradient-primary border-0">
+                <div class="card-body py-3 px-4 d-flex align-items-center justify-content-between flex-wrap">
+                  <p class="mb-0 text-white font-weight-medium">Joins more giveaways </p>
+                  <div class="d-flex">
+                    <a href="https://www.bootstrapdash.com/product/majestic-admin-pro?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn btn-outline-light mr-2 bg-gradient-danger border-0">Join</a>
+                    <button id="bannerClose" class="btn border-0 p-0 ml-auto">
+                      <i class="mdi mdi-close text-white"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body dashboard-tabs p-0">
+                  <ul class="nav nav-tabs px-4" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content py-0 px-0">
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                      <div class="d-flex flex-wrap justify-content-xl-between">
+                        <div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="bi bi-currency-dollar"></i>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                              My Orders
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                              <li><a class="dropdown-item" href="#">Action</a></li>
+                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Earn</small>
+                            <h5 class="mr-2 mb-0">$577545</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-eye mr-3 icon-lg text-success"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">People joined</small>
+                            <h5 class="mr-2 mb-0">9833550</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-download mr-3 icon-lg text-warning"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Downloads</small>
+                            <h5 class="mr-2 mb-0">2233783</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-flag mr-3 icon-lg text-danger"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Flagged</small>
+                            <h5 class="mr-2 mb-0">3497843</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="sales-tab">
+                      <div class="d-flex flex-wrap justify-content-xl-between">
+                        <div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-calendar-heart icon-lg mr-3 text-primary"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Start date</small>
+                            <div class="dropdown">
+                              <a class="btn btn-secondary dropdown-toggle p-0 bg-transparent border-0 text-dark shadow-none font-weight-medium" href="#" role="button" id="dropdownMenuLinkA" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <h5 class="mb-0 d-inline-block">26 Jul 2018</h5>
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkA">
+                                <a class="dropdown-item" href="#">12 Aug 2018</a>
+                                <a class="dropdown-item" href="#">22 Sep 2018</a>
+                                <a class="dropdown-item" href="#">21 Oct 2018</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-download mr-3 icon-lg text-warning"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Downloads</small>
+                            <h5 class="mr-2 mb-0">2233783</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-eye mr-3 icon-lg text-success"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Total views</small>
+                            <h5 class="mr-2 mb-0">9833550</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Revenue</small>
+                            <h5 class="mr-2 mb-0">$577545</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-flag mr-3 icon-lg text-danger"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Flagged</small>
+                            <h5 class="mr-2 mb-0">3497843</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="purchases" role="tabpanel" aria-labelledby="purchases-tab">
+                      <div class="d-flex flex-wrap justify-content-xl-between">
+                        <div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-calendar-heart icon-lg mr-3 text-primary"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Start date</small>
+                            <div class="dropdown">
+                              <a class="btn btn-secondary dropdown-toggle p-0 bg-transparent border-0 text-dark shadow-none font-weight-medium" href="#" role="button" id="dropdownMenuLinkA" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <h5 class="mb-0 d-inline-block">26 Jul 2018</h5>
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkA">
+                                <a class="dropdown-item" href="#">12 Aug 2018</a>
+                                <a class="dropdown-item" href="#">22 Sep 2018</a>
+                                <a class="dropdown-item" href="#">21 Oct 2018</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Revenue</small>
+                            <h5 class="mr-2 mb-0">$577545</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-eye mr-3 icon-lg text-success"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Total views</small>
+                            <h5 class="mr-2 mb-0">9833550</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-download mr-3 icon-lg text-warning"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Downloads</small>
+                            <h5 class="mr-2 mb-0">2233783</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-flag mr-3 icon-lg text-danger"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Flagged</small>
+                            <h5 class="mr-2 mb-0">3497843</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-md-12 stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">Recent Purchases</p>
+                  <div class="table-responsive">
+                    <table id="recent-purchases-listing" class="table">
+                      <thead>
+                        <tr>
+                            <th id="th">#</th>
+                            <th id="th">Name</th>
+                            <th id="th">joined Date</th>
+                            
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                            <td>Jeremy Ortega</td>
+                            <td>Levelled up</td>
+                            <td>Catalinaborough</td>
+                           
+                        </tr>
+                        <tr>
+                            <td>Alvin Fisher</td>
+                            <td>Ui design completed</td>
+                            <td>East Mayra</td>
+                           
+                        </tr>
+                        <tr>
+                            <td>Emily Cunningham</td>
+                            <td>support</td>
+                            <td>Makennaton</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>Minnie Farmer</td>
+                            <td>support</td>
+                            <td>Agustinaborough</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>Betty Hunt</td>
+                            <td>Ui design not completed</td>
+                            <td>Lake Sandrafort</td>
+                        
+                        </tr>
+                        <tr>
+                            <td>Myrtie Lambert</td>
+                            <td>Ui design completed</td>
+                            <td>Cassinbury</td>
+                           
+                        </tr>
+                        <tr>
+                            <td>Jacob Kennedy</td>
+                            <td>New project</td>
+                            <td>Cletaborough</td>
+                        
+                        <tr>
+                            <td>Ernest Wade</td>
+                            <td>Levelled up</td>
+                            <td>West Fidelmouth</td>
+                          
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+      
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+{% endblock%}

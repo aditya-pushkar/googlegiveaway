@@ -1,0 +1,53 @@
+from django.db import models
+from django.conf import settings
+from order.models import Order
+
+# Create your models here.
+
+class Image(models.Model):
+    images = models.ImageField(blank=True)
+
+class Billboard(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    img = models.ForeignKey(Image, null=True, blank=True,related_name='my_img', on_delete=models.CASCADE)
+   
+
+    
+#     # Goal: user able to uplode only (no. of pic ) 
+#     #  no of pic define as total len(user_product)
+
+    # def error(self):
+    #     billboard = Billboard.objects.all()
+    #     order = Order.objects.all()
+    #     error = None
+        
+    #     all_billboard = 0
+    #     all_order = 0
+    #     for item in order:
+    #         if item.user == self.user:
+    #             all_order += 1
+
+    #     for item in billboard:
+    #         if item.user == self.user:
+    #             all_billboard += 1
+
+
+    #     if all_billboard >= all_order:
+    #         error = True
+        
+    #     return error
+
+
+{% comment form  %} 
+# from django.forms import ModelForm
+# from .models import Billboard
+
+# class UplodeImageForm(ModelForm):
+    
+#     class Meta:
+#         model = Billboard
+#         fields = (
+#             'image',
+
+#         )
+ {% endcomment %}

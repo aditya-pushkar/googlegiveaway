@@ -30,6 +30,7 @@ def checkout(request, slug):
             error = "You are already enroled in this cource"
         except:
             pass
+        
         # checking the error 
         if error is None:
 

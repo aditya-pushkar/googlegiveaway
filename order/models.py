@@ -4,6 +4,7 @@ from django.conf import settings
 
 
 
+
 # it store all user order that had been successfuly purchased
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, on_delete=models.CASCADE)

@@ -9,10 +9,11 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 # internal import 
 from .forms import RegistrationForm
-from billboard.forms import UplodeImageForm
+# from billboard.forms import UplodeImageForm
 from .token import account_activation_token
 from .models import UserBase
 from refferal.models import Refferal
+# from billboard.models import Billboard
 
 
 
@@ -21,32 +22,52 @@ from refferal.models import Refferal
 def dashboard(request):
     user = request.user 
     refferal_profile = Refferal.objects.get(user=user)
-    total_refferals = refferal_profile.get_recommended_profiles()
-    formUplode = UplodeImageForm()
+    # billboard_profile = Billboard.objects.get(user=user)
+
+    # user earning
+    refferals_earnings = refferal_profile.get_refferal_earnings()
+    # people who joinded from user  link
+    refferal_profile_detail  = refferal_profile.get_refferal_profiles()
+    # total number of user joined by user refferal code 
+    refferal_count = len(refferal_profile_detail)
+    # users refferal/invite code 
+    current_site = get_current_site(request)
+    refferal_code = f"{current_site.domain}/{refferal_profile.code}"
+
+    # error = billboard_profile.error()
+
+    # formUplode = UplodeImageForm()
+    # if request.method == "POST":
+    #     formUplode = UplodeImageForm(request.POST, request.FILES)
+    #     if formUplode.is_valid():
+
+    #         form = formUplode.save(commit=False)
+    #         form.user = user
+    #         form.image = formUplode.cleaned_data['image']
+    #         form.save()
+
+    #         return redirect('success')
+    #     else:
+    #         pass
     
-    if request.method == "POST":
-        formUplode = UplodeImageForm(request.POST, request.FILES)
-        if formUplode.is_valid():
-
-            form = formUplode.save(commit=False)
-            form.user = user
-            form.image = formUplode.cleaned_data['image']
-            form.save()
-
-            return redirect('success')
-        else:
-            pass
-
     context = {
-        'total_refferals': total_refferals,
-        'form': formUplode
+        # 'form': formUplode,
+        'refferal_count': refferal_count,
+        'refferals_earnings': refferals_earnings,
+        'refferal_profile_detail':refferal_profile_detail,
+        'refferal_code': refferal_code,
+        # 'error': error
+     
     }  
+    # print('error', error)
     return render(request, 'account/dashboard.html', context)
 
 
 def success(request):
     return HttpResponse('your pic is uploded successfuly')
 
+def test(request):
+    return render(request, "account/test.html")
 
 def account_register(request):
     if request.user.is_authenticated:

@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'order.apps.OrderConfig',
     'refferal.apps.RefferalConfig',
-    'billboard.apps.BillboardConfig',
+  
 ]
 
 MIDDLEWARE = [

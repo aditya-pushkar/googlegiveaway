@@ -15,7 +15,7 @@ class Refferal(models.Model):
         return f"{self.user.user_name}---{self.code}"
 
 
-    def get_recommended_profiles(self):
+    def get_refferal_earnings(self):
         qs = Refferal.objects.all()
 
         reff = []
@@ -24,6 +24,15 @@ class Refferal(models.Model):
                 reff.append(profile)
         total_reff  = len(reff)*199
         return total_reff
+
+    def get_refferal_profiles(self):
+        qs = Refferal.objects.all()
+
+        reff = []
+        for profile in qs:
+            if profile.recommended_by == self.user:
+                reff.append(profile)
+        return reff
         
 
     def save(self, *args, **kwargs):

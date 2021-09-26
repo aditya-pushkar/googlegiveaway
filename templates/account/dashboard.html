@@ -1,36 +1,224 @@
-    <!-- Bootstrap -->
+{% extends '../base.html' %}
+{% load static %}
+{% block title%} Dashboard {% endblock %}
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+{% block header %}
+<link rel="stylesheet" href={% static 'css/account/dashboard.css' %}>
+{% endblock header %}
 
 
-    
-<div class="container" style="background-color: grey; height:100px; margin-top:200px">
-  <div class="row">
-    <div class="col">
-      Total amount ${{total_refferals}}
+<!-- body conteent-->
+{% block content %}
+
+  <div class="container-scroller" id='main-content'>
+    <!-- partial:partials/_navbar.html -->
+
+    <!-- partial -->
+ 
+      <!-- partial -->
+      <div class="main-panel" id="main-panel">
+        <div class="content-wrapper">
+          
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="d-flex justify-content-between flex-wrap">
+                <div class="d-flex align-items-end flex-wrap">
+                  <div class="mr-md-3 mr-xl-5">
+                    <h2>Welcome back,</h2>
+                    <p class="mb-md-0">Your analytics dashboard template.</p>
+                  </div>
+                  <div class="d-flex">
+                    <i class="mdi mdi-home text-muted hover-cursor"></i>
+                    <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</p>
+                    
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-end flex-wrap">
+                <button class="btn btn-secondary mt-2 mt-xl-0 gap-2 btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Invite link</button>
+                <div>
+                <p style="color:#F3F3F3;">......</p>
+                </div>
+                <form method = "post"  name="image" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-primary mt-2 mt-xl-0 btn-lg" type="submit">Upload</button>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" id="proBanner">
+            <div class="col-md-12 grid-margin">
+              <div class="card bg-gradient-primary border-0">
+                <div class="card-body py-3 px-4 d-flex align-items-center justify-content-between flex-wrap">
+                  <p class="mb-0 text-white font-weight-medium">Joins more giveaways </p>
+                  <div class="d-flex">
+                    <a href="https://www.bootstrapdash.com/product/majestic-admin-pro?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn btn-outline-light mr-2 bg-gradient-danger border-0">Join</a>
+                    <button id="bannerClose" class="btn border-0 p-0 ml-auto">
+                      <i class="mdi mdi-close text-white"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body dashboard-tabs p-0">
+                  <ul class="nav nav-tabs px-4" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content py-0 px-0">
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                      <div class="d-flex flex-wrap justify-content-xl-between">
+                        <div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="bi bi-currency-dollar"></i>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                              My Orders
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                              <li><a class="dropdown-item" href="#">Action</a></li>
+                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Earnings</small>
+                            <h5 class="mr-2 mb-0">₹ {{refferals_earnings}}</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-eye mr-3 icon-lg text-success"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">People joined</small>
+                            <h5 class="mr-2 mb-0">{{refferal_count}}</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-download mr-3 icon-lg text-warning"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Downloads</small>
+                            <h5 class="mr-2 mb-0">2233783</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                          <i class="mdi mdi-flag mr-3 icon-lg text-danger"></i>
+                          <div class="d-flex flex-column justify-content-around">
+                            <small class="mb-1 text-muted">Flagged</small>
+                            <h5 class="mr-2 mb-0">3497843</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+              <!-- User's refferal code  -->
+        
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Your invite link</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  {{ refferal_code}}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-md-12 stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">People joined from your link </p>
+                  <div class="table-responsive">
+                    <table id="recent-purchases-listing" class="table">
+                      <thead>
+                        <tr>
+                            <th id="th">#</th>
+                            <th id="th">Name</th>
+                            <th id="th">joined Date</th>
+                            
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for profile in refferal_profile_detail%}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{profile.user}}</td>
+                            <td>{{profile.created}}</td>
+                        </tr>
+                      {% endfor %}
+                       
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">People joined from your link </p>
+                  <div class="table-responsive">
+                    <table id="recent-purchases-listing" class="table">
+                      <thead>
+                        <tr>
+                            <th id="th">#</th>
+                            <th id="th">Name</th>
+                            <th id="th">joined Date</th>
+                            
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for profile in refferal_profile_detail%}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{profile.user}}</td>
+                            <td>{{profile.created}}</td>
+                        </tr>
+                      {% endfor %}
+                       
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+      
+      </div>
+      <!-- main-panel ends -->
     </div>
-    <div class="col">
-      Column
-    </div>
-    <div class="col">
-      Column
-    </div>
+    <!-- page-body-wrapper ends -->
   </div>
-      <form method = "post"  name="image" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
-    </form>
-</div>
+  <!-- container-scroller -->
+{% endblock%}
+
 
 
