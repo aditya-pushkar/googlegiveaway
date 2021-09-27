@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'order.apps.OrderConfig',
     'refferal.apps.RefferalConfig',
+    'feed.apps.FeedConfig',
   
 ]
 

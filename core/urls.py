@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('store.urls', namespace='store')),
     path('account/', include('account.urls', namespace='account')),
     path('checkout/', include('order.urls', namespace='order')),
+    path('feed/', include('feed.urls', namespace='feed')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

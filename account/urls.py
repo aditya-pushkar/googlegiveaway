@@ -14,7 +14,7 @@ urlpatterns = [
                                                 form_class=UserLoginForm), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('test/', views.test, name='test'),
+    path('success/', views.success, name='success'),
     path('register/', views.account_register, name='register'),
     path('activate/<slug:uidb64>/<slug:token>)/', views.account_activate, name='activate'),
 
