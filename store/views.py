@@ -5,7 +5,7 @@ from django.views.generic import ListView
 
 # Model Import
 from .models import Category, Product
-from order.models import Order
+from order.models import Order, Payment
 from feed.models import UplodedPic
 
 # Create your views here.
@@ -50,21 +50,12 @@ def product_detail(request, slug):
     # user profile recommendation 
     pr = product.id 
     ord = Order.objects.filter(product__id=pr)
-    
-    
-    # user_name = []
-    # user_img = []
     user_dict = {}
     for item in ord:
         up = UplodedPic.objects.filter(user=item.user.id)
         
-        for item in up:
-            # user_name.append(item.user.user_name)
-            # user_img.append(item.img.url)
-            # um = (item.user.user_name)
-            # ui = (item.img.url)    
+        for item in up:   
             user_dict.update({f"{item.user.user_name}": f"{item.img.url}"})
-    
     print(user_dict)
  
    

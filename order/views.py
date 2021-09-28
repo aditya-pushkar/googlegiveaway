@@ -10,7 +10,7 @@ import razorpay
 from store.models import Product 
 from .models import Order, Payment
 
-# razorpay client 
+"""razorpay client """
 client = razorpay.Client(auth=(settings.KEY_ID, settings.KEY_SECRET))
 
 @login_required
