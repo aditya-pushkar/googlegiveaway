@@ -395,3 +395,7 @@ html, body {
 .card-description > p {
 	margin: 0;
 }
+
+#feed-icon{
+    color: black;
+}

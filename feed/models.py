@@ -11,12 +11,13 @@ class UplodedPic(models.Model):
     # get user's insta user_name
     insta = models.CharField(max_length=20, null=True, blank=True)
     # user facebook profile link
-    fb = models.CharField(max_length=100, blank=True)
+    fb = models.URLField(max_length=100, blank=True)
 
     img = models.ImageField(blank=False)
 
 
-
+    class Meta:
+        ordering = ("-id", )
    
 
     def __str__(self):

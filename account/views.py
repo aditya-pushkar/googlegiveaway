@@ -8,7 +8,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 # internal import 
-from .forms import RegistrationForm
+from .forms import RegistrationForm, UserEditForm
 from feed.forms import UplodeImageForm
 from .token import account_activation_token
 from .models import UserBase
@@ -52,6 +52,7 @@ def dashboard(request):
             form.fb = formUplode.cleaned_data['fb']
             form.img = formUplode.cleaned_data['img']
             form.save()
+            print(form)
 
             return redirect('account:success')
         else:
@@ -73,8 +74,18 @@ def dashboard(request):
 def success(request):
     return HttpResponse('your pic is uploded successfuly')
 
-def test(request):
-    return render(request, "account/test.html")
+
+def edit_detail(request):
+ 
+    if request.method == 'POST':
+        user_form = UserEditForm(instance=request.user, data=request.POST)
+
+        if user_form.is_valid():
+            user_form.save()
+    else:
+        user_form = UserEditForm(instance=request.user)
+    return render(request, 'account/user/settings.html', {'user_form': user_form})
+
 
 def account_register(request):
     if request.user.is_authenticated:
