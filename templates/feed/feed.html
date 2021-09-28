@@ -13,7 +13,23 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    
+    <style>
+      .circle-container {
+        margin: 100px;
+        margin-left:50%;
+      }
+
+      .my-button {
+        width: 30px;
+        height: 30px;
+        outline-style:initial;
+        border-radius: 100px;
+        cursor: pointer;
+        background-color: grey;
+          
+      }
+    </style>
+  
     
 </head>
 
@@ -29,108 +45,9 @@
 
 <div id="feed">
 
-    <ul class="card-list">
+    <ul class="card-list infinite-container">
         {% for item in qs %} 
-        <li class="card">
-        <!-- background-img: url is the image that view at the time of loading and before the blur effect -->
-            <a class="card-image"  target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="{{item.img.url}}">
-                <img src="#" alt="Jane Doe" />
-            </a>
-            <a class="card-description" target="_blank">
-                <h2>{{item.user.user_name}}</h2>
-                <p>Converge</p>
-            </a>
-        </li>
-
-        <li class="card">
-        <!-- background-img: url is the image that view at the time of loading and before the blur effect -->
-            <a class="card-image"  target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="{{item.img.url}}">
-                <img src="#" alt="Jane Doe" />
-            </a>
-            <a class="card-description" target="_blank">
-                <h2>{{item.user.user_name}}</h2>
-                <p>Converge</p>
-            </a>
-        </li>
-
-        <li class="card">
-        <!-- background-img: url is the image that view at the time of loading and before the blur effect -->
-            <a class="card-image"  target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="{{item.img.url}}">
-                <img src="#" alt="Jane Doe" />
-            </a>
-            <a class="card-description" target="_blank">
-                <h2>{{item.user.user_name}}</h2>
-                <p>Converge</p>
-            </a>
-        </li>
-
-         <li class="card">
-        <!-- background-img: url is the image that view at the time of loading and before the blur effect -->
-            <a class="card-image"  target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="{{item.img.url}}">
-                <img src="#" alt="Jane Doe" />
-            </a>
-            <a class="card-description" target="_blank">
-                <h2>{{item.user.user_name}}</h2>
-                <p>Converge</p>
-            </a>
-        </li>
-
-         <li class="card">
-        <!-- background-img: url is the image that view at the time of loading and before the blur effect -->
-            <a class="card-image"  target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="{{item.img.url}}">
-                <img src="#" alt="Jane Doe" />
-            </a>
-            <a class="card-description" target="_blank">
-                <h2>{{item.user.user_name}}</h2>
-                <p>Converge</p>
-            </a>
-        </li>
-
-         <li class="card">
-        <!-- background-img: url is the image that view at the time of loading and before the blur effect -->
-            <a class="card-image"  target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="{{item.img.url}}">
-                <img src="#" alt="Jane Doe" />
-            </a>
-            <a class="card-description" target="_blank">
-                <h2>{{item.user.user_name}}</h2>
-                <p>Converge</p>
-            </a>
-        </li>
-
-         <li class="card">
-        <!-- background-img: url is the image that view at the time of loading and before the blur effect -->
-            <a class="card-image"  target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="{{item.img.url}}">
-                <img src="#" alt="Jane Doe" />
-            </a>
-            <a class="card-description" target="_blank">
-                <h2>{{item.user.user_name}}</h2>
-                <p>Converge</p>
-            </a>
-        </li>
-
-         <li class="card">
-        <!-- background-img: url is the image that view at the time of loading and before the blur effect -->
-            <a class="card-image"  target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="{{item.img.url}}">
-                <img src="#" alt="Jane Doe" />
-            </a>
-            <a class="card-description" target="_blank">
-                <h2>{{item.user.user_name}}</h2>
-                <p>Converge</p>
-            </a>
-        </li>
-
-         <li class="card">
-        <!-- background-img: url is the image that view at the time of loading and before the blur effect -->
-            <a class="card-image"  target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="{{item.img.url}}">
-                <img src="#" alt="Jane Doe" />
-            </a>
-            <a class="card-description" target="_blank">
-                <h2>{{item.user.user_name}}</h2>
-                <p>Converge</p>
-            </a>
-        </li>
-
-         <li class="card">
+        <li class="card infinite-item">
         <!-- background-img: url is the image that view at the time of loading and before the blur effect -->
             <a class="card-image"  target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="{{item.img.url}}">
                 <img src="#" alt="Jane Doe" />
@@ -144,16 +61,28 @@
         {% endfor %}
     </ul>
 
-    {% if page_obj.has_next %}
-    <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">next</a>
-    {% endif %}
+    <div class="circle-container ">
+                <button class=" my-button loading">
+                    .
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {% if page_obj.has_next %}
+                    <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">next</a>
+                    {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
 
 
 </div>
 
 <!-- Jquery needed -->
-
-<script src="js/scripts.js"></script>
+<script src="{% static 'js/feed/nav.js' %}"></script>
+<script src="{% static "js/feed/jquery.waypoints.min.js" %}"></script>
+<script src="{% static "js/feed/infinite.min.js" %}"></script>
 
 <!-- Function used to shrink nav bar removing paddings and adding black background -->
 <script>
@@ -165,8 +94,21 @@
             $('.nav').removeClass('affix');
         }
     });
+
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+
+        offset: 'bottom-in-view',
+
+        onBeforePageLoad: function () {
+            $('.loading').show();
+        },
+        onAfterPageLoad: function () {
+            $('.loading').hide();
+        }
+
+    });
 </script>
-<script src="{% static 'js/feed/feed.js' %}"></script>
 
 </body>
 </html>
