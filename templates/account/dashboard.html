@@ -3,7 +3,7 @@
 {% block title%} Dashboard {% endblock %}
 
 {% block header %}
-<link rel="stylesheet" href={% static 'css/account/dashboard.css' %}>
+<link rel="stylesheet" href="{% static 'css/account/dashboard.css' %}">
 {% endblock header %}
 
 
@@ -38,13 +38,7 @@
                 <div>
                 <p style="color:#F3F3F3;">......</p>
                 </div>
-                {% if error == False %}
-                  <form method = "post"  name="image" enctype="multipart/form-data">
-                      {% csrf_token %}
-                      {{ form.as_p }}
-                      <button class="btn btn-primary mt-2 mt-xl-0 btn-lg" type="submit">Upload</button>
-                  </form>
-                {% endif %}
+                
                 </div>
               </div>
             </div>
@@ -126,27 +120,6 @@
             </div>
           </div>
 
-              <!-- User's refferal code  -->
-        
-
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Your invite link</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  {{ refferal_code}}
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                
-                </div>
-              </div>
-            </div>
-          </div>
       
           <div class="row">
             <div class="col-md-12 stretch-card">
@@ -180,38 +153,24 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12 stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <p class="card-title">People joined from your link </p>
-                  <div class="table-responsive">
-                    <table id="recent-purchases-listing" class="table">
-                      <thead>
-                        <tr>
-                            <th id="th">#</th>
-                            <th id="th">Name</th>
-                            <th id="th">joined Date</th>
-                            
-                        </tr>
-                      </thead>
-                      <tbody>
-                      {% for profile in refferal_profile_detail%}
-                        <tr>
-                            <td>{{ forloop.counter }}</td>
-                            <td>{{profile.user}}</td>
-                            <td>{{profile.created}}</td>
-                        </tr>
-                      {% endfor %}
-                       
-                      </tbody>
-                    </table>
-                    
-                  </div>
-                </div>
+          
+          {% if error == False %}
+            <h1 id="form-head">
+              Show case your profile by uploding your picture  
+            </h1>
+
+            <div class="row">
+              <div class="col-md-12 stretch-card">
+
+                <form method = "post"  name="image" enctype="multipart/form-data"  id="form-form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-primary mt-2 mt-xl-0 btn-lg" type="submit">Upload</button>
+                </form>
+                
               </div>
             </div>
-        </div>
+          {% endif %}
         <!-- content-wrapper ends -->
       
       </div>
@@ -219,7 +178,27 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-  <!-- container-scroller -->
+ 
+
+  <!-- User's refferal code  -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Your invite link</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            {{ refferal_code}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+          </div>
+        </div>
+      </div>
+    </div>
 {% endblock%}
 
 

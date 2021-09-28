@@ -13799,10 +13799,32 @@ p{
 
     
 }
+
+/* style=" margin-left: 30%; font-size: 15px; margin-top: 30px;"  */
+#form-head{
+  margin-left: 30%;
+  font-size: 15px;
+  margin-top: 35px;
+}
+/* style="margin-top:40px; margin-left: 35%;" */
+
+#form-form{
+  margin-top: 30px;
+  margin-left: 35%;
+}
+
 @media (max-width: 576px){
   #main-content{
     margin-top:16% ;
     margin-left: 0%;
+  }
+  #form-head{
+    margin-left: 10%;
+  }
+
+  #form-form{
+    margin-left: 12%;
+    margin-top: 25px;
   }
 
  

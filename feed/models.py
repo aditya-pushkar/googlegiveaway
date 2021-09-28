@@ -1,22 +1,20 @@
 from django.db import models
 from django.conf import settings
-from PIL import Image
+
+
 
 # Create your models here.
 
 
 class UplodedPic(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # get user's insta user_name
+    insta = models.CharField(max_length=20, null=True, blank=True)
+    # user facebook profile link
+    fb = models.CharField(max_length=100, blank=True)
+
     img = models.ImageField(blank=False)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        image = Image.open(self.img.path)
-
-        if image.height > 350 or image.width>350:
-            output_size = (350, 350)
-            image.thumbnail(output_size)
-            image.save(self.img.path)
 
 
    

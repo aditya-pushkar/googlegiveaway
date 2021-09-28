@@ -48,6 +48,8 @@ def dashboard(request):
 
             form = formUplode.save(commit=False)
             form.user = user
+            form.insta = formUplode.cleaned_data['insta']
+            form.fb = formUplode.cleaned_data['fb']
             form.img = formUplode.cleaned_data['img']
             form.save()
 
