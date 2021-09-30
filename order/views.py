@@ -10,7 +10,8 @@ import razorpay
 from store.models import Product 
 from .models import Order, Payment
 
-"""razorpay client """
+
+"""Razorpay client """
 client = razorpay.Client(auth=(settings.KEY_ID, settings.KEY_SECRET))
 
 @login_required
@@ -65,6 +66,7 @@ def checkout(request, slug):
         'error':error 
     }
     return render(request, 'order/checkout.html', context)
+
 
 @csrf_exempt
 def verifyPayment(request):

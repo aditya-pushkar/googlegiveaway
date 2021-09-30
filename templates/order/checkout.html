@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static %}
+{% comment %} f3f3f3 {% endcomment %}
 
 <html lang="en">
 <head>
@@ -17,81 +19,71 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
   ></script>
-  <style>
-  @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap");
-  
-  body{
-    font-family: "Nunito", sans-serif;
-  }
-  #ck-img{
-    margin-left: 10%;
-  }
-
-  .bg-pay {
-      background-color: #eee;
-      border-radius: 2px
-  }
-
-
-  .lh-16 {
-      line-height: 16px
-  }
-  </style>
+  <link rel="stylesheet" href="{% static 'css/order/checkout.css' %}">
+   
 </head>
 <body>
 
-        
-  </div>
   <div class="b-example-divider"></div>
-  
 
-  <div class="container mt-3 md-3 col-xxl-8 px-4 py-5">
-  
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-    
-      <div class="col-10 col-sm-8 col-lg-6">
-      
-        <img src="{{product.image.url}}" class="d-block mx-lg-auto img-fluid" alt="Product Img" width="900" height="900" loading="lazy" id="ck-img">
-      </div>
-      <div class="col-lg-6 text-center">
-        <h1 class="display-5 fw-bold lh-1 mb-3">{{product.title}}</h1>
-        <div>
-        </div>
-        <p class="lead">₹ {{product.price}}</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <div>
-        </div>
-          <button  type="button" class="btn btn-primary btn-lg px-4 me-md-2"><a style="color: white;  text-decoration: none;" href="?action=create_payment">Proceed<a/></button>
-          
-        </div>
-        <div style="margin-top:30px;">
-        <h1></h1>
-        </div>
-        <!-- disclamer -->
-        <p1 class="display-11" style="padding-top:10%;"> <span style="color: red;">*</span> By clicking on proceed you will be atomatically align with our <a href="#">term and condition</a></p>
+<div class='container'>
+  <div class='window'>
+    <div class='order-info'>
+      <div class='order-info-content'>
+        <h2>Order Summary</h2>
+                <div class='line'></div>
+        <table class='order-table'>
+          <tbody>
+            <tr>
+              <td><img src="{{product.image.url}}" class='full-width'></img>
+              </td>
+              <td>
+                <br> <span class='thin'>{{product.title}}</span>
+                <br > win <br> <span class='thin small'>{{product.title}}....<br><br></span>
+              </td>
 
+            </tr>
+            <tr>
+              <td>
+                <div class='price'>₹ {{product.price}}</div>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+        <div class='line'></div>
+        
+        <div class='total'>
+          <span style='float:left;'>
+            <div class='thin dense'>GST 18%</div>
+            <div class='thin dense'>Delivery</div>
+            TOTAL
+          </span>
+          <span style='float:right; text-align:right;'>
+            <div class='thin dense'>$68.75</div>
+            <div class='thin dense'>$4.95</div>
+            ₹ {{product.price}}
+          </span>
+        </div>
+  </div>
+    </div>
+        <div class='credit-info'>
+          <div class='credit-info-content'>
+            
+            <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
+            Announcement date:  Announced soon
+
+            <span  style="color: red; margin-top: 20px;">*</span> By clicking on proceed you will be atomatically align with our <a href="#">term and condition</a>
+            
+            <button  href="?action=create_payment" class='pay-btn'><a style="color: white;  text-decoration: none;" href="?action=create_payment">Proceed<a/></button>
+          </div>
+
+        
+
+        </div>
       </div>
     </div>
 
-    <div class="col-md-2"> </div>
-        <div class="col-md-4">
-            <div class="bg-pay p-3"> <span class="font-weight-bold">Order Recap</span>
-                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Entry Price</span> <span>₹ {{product.price}}</span> </div>
-                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">GST</span> <span>+ 18%</span> </div>
-                
-                
-                <hr>
-                <div class="d-flex justify-content-between mt-2"> <span class="lh-16 fw-500">Announcement Date:<br> </span> <span>To be announced </span> </div>
-                <hr>
-                
-                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Discount </span> <span>- 18%</span> </div>
-                <hr>
-                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Total </span> <span class="text-success">₹ {{product.price}}</span> </div>
-            </div>
-        </div>
-  </div>
-
-  <div class="b-example-divider"></div>
 
 
 
