@@ -139,4 +139,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # RazorPay
 
 KEY_ID = "rzp_test_tRzIzsfuB2WrqP"
-KEY_SECRET = "Gggpa524l7jqnz63akGGuQzl"
+KEY_SECRET = "{{razorpay_secret_key}}"
